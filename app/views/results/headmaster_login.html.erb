@@ -1,23 +1,25 @@
-<h1>List of Students</h1>
-<table>
-  <tr>
-	<th>Student Name</th>
-	<th>Roll Number</th>
-	<th>Phone</th>
-	<th>Gender</th>
-	<th>Email</th>
-	<th></th>
-  </tr>
- 
-  <% @students.each do |student| %>
-    <tr>
-      <td><%= student.name %></td>
-	  <td><%= student.rollnumber %></td>
-	  <td><%= student.phone %></td>
-	  <td><%= student.gender %></td>
-	  <td><%= student.email %></td>
-	  <td><%= link_to 'Edit', student_edit_result_path(student), :class => 'btn btn-default' %></td>
-    </tr>
-  <% end %>
-</table>
-<p><%= link_to('Student Addmission', student_addmission_results_path) %> </p>
+<h1> Welcome to the School Management Portal</h1>
+<%if @number_of_students >= 1%>
+	<h1>List of Students</h1>
+	<table>
+  	  <tr>
+		  <th>Student Name</th>
+		  <th>Roll Number</th>
+		  <th>Phone</th>
+		  <th>Gender</th>
+		  <th>Email</th>
+		  <th></th>
+	  </tr>
+	  <% @students.each do |student| %>
+	  <tr>
+      	<td><%= student.name %></td>
+	  	<td><%= student.rollnumber %></td>
+	  	<td><%= student.phone %></td>
+	  	<td><%= student.gender %></td>
+	  	<td><%= student.email %></td>
+	  	<td><%= link_to 'Edit', student_edit_result_path(student), :class => 'btn btn-default' %></td>
+	  </tr>
+	  <% end %>
+	</table>
+<%end%>
+<p><%= link_to('Add a New Student', student_addmission_results_path) %> </p>

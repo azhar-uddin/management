@@ -1,14 +1,14 @@
 <h1>Listing Result</h1>
 <table>
   <tr>
-    <th>Student Id</th>
+    <th>Student RollNumber</th>
 	<th>Subject</th>
 	<th>Marks</th>
   </tr>
  
   <% @result.each do |result| %>
     <tr>
-      <td><%= result.user_id %></td>
+      <td><%= result.user.rollnumber %></td>
 	  <td><%= result.sname %></td>
 	  <td><%= result.marks %></td>
     </tr>

@@ -16,7 +16,7 @@
  
   <p>
     <%= f.label :Student_RollNumber %>
-	<% options = options_from_collection_for_select(@users, 'rollnumber', 'rollnumber') %>
+	<% options = options_from_collection_for_select(@users, 'id', 'rollnumber') %>
 	<%= f.select :user_id,  options %>
   </p>
    

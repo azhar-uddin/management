@@ -10,7 +10,6 @@ class ResultsController < ApplicationController
   def create
     @result = Result.new(subject_params)
     if @result.save
-      notice = 'Result Added'
       redirect_to new_result_path
     else
       render 'new'
@@ -43,6 +42,7 @@ class ResultsController < ApplicationController
   
   def headmaster_login
     @students = User.where(:role => 0)
+    @number_of_students = @students.count
   end
   
   def student_addmission
