@@ -33,7 +33,8 @@
   
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender, autocomplete: "off" %>
+	<%= f.radio_button :gender, 'M' %> Male
+	<%= f.radio_button :gender, 'F' %>Female
   </div>
   
   <div class="field">

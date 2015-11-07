@@ -1,4 +1,8 @@
 <h1>New SUBJECT</h1>
 <%= render 'form' %>
 <%= link_to 'All Subjects', subjects_path %>
+<% if current_user.role == 'teacher'%>
 <p><%= link_to('My Home', teacher_login_results_path)  %></p>
+<%elsif current_user.role == 'head_master'%>
+<p><%= link_to('My Home', headmaster_login_results_path)  %></p>
+<%end%>
