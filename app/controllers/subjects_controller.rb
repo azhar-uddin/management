@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
-
+  before_filter :check_teacher_privileges!
+  
   def index
     @subject = Subject.all
   end

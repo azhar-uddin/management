@@ -1,4 +1,3 @@
-<%= form_for :student, url: student_create_results_path do |f| %>
  
   <% if @student.errors.any? %>
     <div id="error_explanation">
@@ -15,37 +14,40 @@
   <% end %>
  
   <p>
-    <%= f.label :StudentEmail %>
+    <%= f.label :StudentEmail %><br />
     <%= f.email_field :email %>
   </p>
   
   <p>
-    <%= f.label :Password %>
+    <%= f.label :RollNumber %><br />
+    <%= f.text_field :rollnumber %>
+  </p>
+  
+  <p>
+    <%= f.label :Password %><br />
     <%= f.password_field :password %>
   </p>
   
   <p>
-    <%= f.label :ConfirmPassword %>
+    <%= f.label :ConfirmPassword %><br />
     <%= f.password_field :password_confirmation %>
   </p>
   
   <p>
-    <%= f.label :Name %>
+    <%= f.label :Name %><br />
     <%= f.text_field :name %>
   </p>
   
   <p>
-    <%= f.label :Phone %>
+    <%= f.label :Phone %><br />
     <%= f.text_field :phone %>
   </p>
   
   <p>
-    <%= f.label :Gender %>
+    <%= f.label :Gender %><br />
     <%= f.text_field :gender %>
   </p>
   
   <p>
     <%= f.submit %>
   </p>
- 
-<% end %>

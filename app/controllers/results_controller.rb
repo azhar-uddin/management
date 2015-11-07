@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
-
+  before_filter :check_teacher_privileges!, except: :student_login
+  
   def new
     @result = Result.new
     @subjects = Subject.all
@@ -21,7 +22,15 @@ class ResultsController < ApplicationController
   end
   
   def home
-    
+    if current_user != nil
+      if current_user.role == 'student'
+        redirect_to student_login_results_path
+      elsif current_user.role == 'teacher'
+        redirect_to teacher_login_results_path
+      else
+        redirect_to headmaster_login_results_path
+      end
+    end
   end
   
   def student_login
@@ -29,7 +38,7 @@ class ResultsController < ApplicationController
   end
   
   def teacher_login
-    @result = Result.where(:user_id => current_user[:rollnumber])
+    
   end
   
   def headmaster_login
@@ -40,8 +49,26 @@ class ResultsController < ApplicationController
     @student = User.new
   end
   
+  def student_edit
+    @student = User.find(params[:id])
+  end
+  
   def student_create
-    raise params.inspect
+    @student = User.new(params.require(:student).permit(:id, :email, :rollnumber, :password, 
+                                                        :password_confirmation, :name, :phone, :gender))
+    @student.save
+    redirect_to headmaster_login_results_path
+  end
+  
+  def student_update
+    @student = User.find(params[:id])
+ 
+    if @student.update(params.require(:student).permit(:id, :email, :rollnumber, :password, 
+                                                        :password_confirmation, :name, :phone, :gender))
+      redirect_to headmaster_login_results_path
+    else
+      render 'student_edit'
+    end
   end
   
   private
