@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Subject</th>
+	<th>Marks</th>
+  </tr>
+ 
+  <% @result.each do |result| %>
+    <tr>
+	  <td><%= result.sname %></td>
+	  <td><%= result.marks %></td>
+    </tr>
+  <% end %>
+</table>

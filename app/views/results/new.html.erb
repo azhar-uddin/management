@@ -1,0 +1,38 @@
+<%= form_for @result do |f| %>
+ 
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@result.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @result.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :Student_RollNumber %>
+	<% options = options_from_collection_for_select(@users, 'rollnumber', 'rollnumber') %>
+	<%= f.select :user_id,  options %>
+  </p>
+   
+  <p>
+    <%= f.label :Subject %>
+	<% options = options_from_collection_for_select(@subjects, 'sname', 'sname') %>
+	<%= f.select :sname,  options %>
+  </p>
+  
+  <p>
+    <%= f.label :marks %>
+    <%= f.text_field :marks %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

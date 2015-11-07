@@ -1,0 +1,17 @@
+<h1>Listing Result</h1>
+<%= link_to 'New Result', new_result_path %>
+<table>
+  <tr>
+    <th>Student Id</th>
+	<th>Subject</th>
+	<th>Marks</th>
+  </tr>
+ 
+  <% @result.each do |result| %>
+    <tr>
+      <td><%= result.user_id %></td>
+	  <td><%= result.sname %></td>
+	  <td><%= result.marks %></td>
+    </tr>
+  <% end %>
+</table>
