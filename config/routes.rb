@@ -13,6 +13,8 @@ Rails.application.routes.draw do
        get 'student_login'
        get 'teacher_login'
        get 'headmaster_login'
+       get 'student_addmission'
+       get 'student_create'
      end
    end
 

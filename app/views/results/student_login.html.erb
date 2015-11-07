@@ -2,12 +2,26 @@
   <tr>
     <th>Subject</th>
 	<th>Marks</th>
+	<th>Result</th>
   </tr>
  
   <% @result.each do |result| %>
     <tr>
 	  <td><%= result.sname %></td>
 	  <td><%= result.marks %></td>
+	  <td>
+	  	<% if result.marks >= 70 %>
+			<%= 'Distinction' %>
+		<% elsif result.marks >= 60 and result.marks < 70 %>
+			<%= 'First Class' %>
+		<% elsif result.marks >= 50 and result.marks < 60 %>
+			<%= 'Second Class' %>
+		<% elsif result.marks >= 40 and result.marks < 50 %>
+			<%= 'Third Class' %>
+		<% else %>
+			<%= 'Fail' %>
+		<% end %>
+	  </td>
     </tr>
   <% end %>
 </table>
