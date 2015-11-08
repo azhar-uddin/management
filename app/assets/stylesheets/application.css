@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+.container {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 15px;
+	height: 600px;
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+
+.loginpage {
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: #F5F7FF
+}
+
+.loginlogout {
+	position: fixed;
+	right: 60px;
+	top: 5px;
+}

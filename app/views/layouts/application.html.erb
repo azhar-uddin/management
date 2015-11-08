@@ -6,8 +6,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-	<div class="container">
+<body style='background-color: #F5F7FF'>
+	<div class="container" style="background-color:white">
+		<div class='navbar'>
 		<% if notice %>
   	  		<p class="alert alert-success"><%= notice %></p>
 		<% end %>
@@ -17,17 +18,14 @@
 		
 		
 		<% if user_signed_in? %>
-		  <li>
-			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-		  </li>
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'loginlogout') %>
 		<% else %>
-		  <li>
-			  <h1>Please Login to Continue</h1>
-			  <%= link_to('Login', new_user_session_path)  %>  
-		  </li>
+			<h1 class="text-center">Please Login to Continue</h1>
+			<%= link_to('Login', new_user_session_path, :class => 'loginlogout')  %>
 		<% end %>
 		
 		<%= yield %>
+	</div>
 	</div>
 </body>
 </html>

@@ -23,7 +23,7 @@ class ResultsController < ApplicationController
   end
   
   def home
-    if current_user != nil
+    if current_user
       if current_user.role == 'student'
         redirect_to student_login_results_path
       elsif current_user.role == 'teacher'
@@ -31,21 +31,37 @@ class ResultsController < ApplicationController
       else
         redirect_to headmaster_login_results_path
       end
+    else
+      redirect_to user_session_path
     end
   end
   
   def student_login
     @result = current_user.results
-    #@result = Result.where(:user_id => current_user[:rollnumber])
+    @student = current_user
+    if current_user.gender == 'm' || 'M'
+      @name = ' Mr. ' + current_user.name
+    else
+      @name = ' Miss. ' + current_user.name
+    end
   end
   
   def teacher_login
-    
+    if current_user.gender == 'm' || 'M'
+      @name = ' Mr. ' + current_user.name
+    else
+      @name = ' Miss. ' + current_user.name
+    end
   end
   
   def headmaster_login
     @students = User.where(:role => 0)
     @number_of_students = @students.count
+    if current_user.gender == 'm' || 'M'
+      @name = ' Mr. ' + current_user.name
+    else
+      @name = ' Miss. ' + current_user.name
+    end
   end
   
   def student_addmission

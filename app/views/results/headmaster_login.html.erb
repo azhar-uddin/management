@@ -1,7 +1,7 @@
-<h1> Welcome to the School Management Portal</h1>
+<h1 class="text-center"> Welcome <%= @name %></h1>
 <%if @number_of_students >= 1%>
 	<h1>List of Students</h1>
-	<table>
+	<table class='table'>
   	  <tr>
 		  <th>Student Name</th>
 		  <th>Roll Number</th>
@@ -22,6 +22,6 @@
 	  <% end %>
 	</table>
 <%end%>
-<p><%= link_to('Add a New Student', student_addmission_results_path) %> </p>
-<p><%= link_to('Add a New Subject', new_subject_path) %> </p>
-<p><%= link_to('Students Result', results_path) %> </p>
+<p><%= link_to('Add a New Student', student_addmission_results_path, :class => 'btn btn-info') %> </p>
+<p><%= link_to('Add a New Subject', new_subject_path, :class => 'btn btn-info') %> </p>
+<p><%= link_to('Students Result', results_path, :class => 'btn btn-info') %> </p>

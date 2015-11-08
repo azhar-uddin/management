@@ -1,7 +1,7 @@
 <h1>Listing Result</h1>
-<table>
+<table class='table'>
   <tr>
-    <th>Student RollNumber</th>
+    <th>Student Roll Number</th>
 	<th>Subject</th>
 	<th>Marks</th>
   </tr>
@@ -15,5 +15,8 @@
   <% end %>
 </table>
 <% if current_user.role == 'teacher'%>
-	<%= link_to 'New Result', new_result_path %>
+	<p><%= link_to 'New Result', new_result_path, :class => 'btn btn-info' %></p>
+	<p><%= link_to('My Home', teacher_login_results_path, :class => 'btn btn-info')  %></p>
+<%elsif current_user.role == 'head_master'%>
+    <p><%= link_to('My Home', headmaster_login_results_path, :class => 'btn btn-info')  %></p>
 <%end%>
