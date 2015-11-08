@@ -23,4 +23,4 @@ teacher.role = 1
 teacher.name = 'Peter'
 teacher.phone = '978776544'
 teacher.gender = 'M'
-teacher.save
+teacher.save!

@@ -47,6 +47,8 @@ class ResultsController < ApplicationController
   end
   
   def teacher_login
+    @students = User.where(:role => 0)
+    @number_of_students = @students.count
     if current_user.gender == 'm' || current_user.gender == 'M'
       @name = ' Mr. ' + current_user.name
     else
