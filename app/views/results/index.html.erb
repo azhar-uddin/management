@@ -14,9 +14,11 @@
     </tr>
   <% end %>
 </table>
-<% if current_user.role == 'teacher'%>
-	<p><%= link_to 'New Result', new_result_path, :class => 'btn btn-info' %></p>
-	<p><%= link_to('My Home', teacher_login_results_path, :class => 'btn btn-info')  %></p>
-<%elsif current_user.role == 'head_master'%>
-    <p><%= link_to('My Home', headmaster_login_results_path, :class => 'btn btn-info')  %></p>
+<%if current_user %>
+	<% if current_user.role == 'teacher'%>
+		<p><%= link_to 'New Result', new_result_path, :class => 'btn btn-info' %></p>
+		<p><%= link_to('My Home', teacher_login_results_path, :class => 'btn btn-info')  %></p>
+	<%elsif current_user.role == 'head_master'%>
+    	<p><%= link_to('My Home', headmaster_login_results_path, :class => 'btn btn-info')  %></p>
+	<%end%>
 <%end%>
