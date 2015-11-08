@@ -39,15 +39,15 @@ class ResultsController < ApplicationController
   def student_login
     @result = current_user.results
     @student = current_user
-    if current_user.gender == 'm' || 'M'
+    if current_user.gender == 'm' || current_user.gender == 'M'
       @name = ' Mr. ' + current_user.name
-    else
+    elsif
       @name = ' Miss. ' + current_user.name
     end
   end
   
   def teacher_login
-    if current_user.gender == 'm' || 'M'
+    if current_user.gender == 'm' || current_user.gender == 'M'
       @name = ' Mr. ' + current_user.name
     else
       @name = ' Miss. ' + current_user.name
@@ -57,7 +57,7 @@ class ResultsController < ApplicationController
   def headmaster_login
     @students = User.where(:role => 0)
     @number_of_students = @students.count
-    if current_user.gender == 'm' || 'M'
+    if current_user.gender == 'm' || current_user.gender == 'M'
       @name = ' Mr. ' + current_user.name
     else
       @name = ' Miss. ' + current_user.name
