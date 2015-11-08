@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     
     def check_student_privileges!
       if current_user
-        redirect_to student_login_results_path, notice: 'You dont have enough permissions to be here' unless current_user.role == 'teacher' || current_user.role == 'head_master'
+        redirect_to student_login_results_path, notice: 'You dont have enough permissions to be there' unless current_user.role == 'teacher' || current_user.role == 'head_master'
       else
         redirect_to user_session_path
       end
@@ -49,8 +49,8 @@ class ApplicationController < ActionController::Base
     
     def check_hm_privileges!
       if current_user
-        redirect_to student_login_results_path, notice: 'You dont have enough permissions to be here' if current_user.role == 'student'
-        redirect_to teacher_login_results_path, notice: 'You dont have enough permissions to be here' if current_user.role == 'teacher'
+        redirect_to student_login_results_path, notice: 'Only Head Master can add Student' if current_user.role == 'student'
+        redirect_to teacher_login_results_path, notice: 'Only Head Master can add Student' if current_user.role == 'teacher'
       else
         redirect_to user_session_path
       end

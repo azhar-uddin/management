@@ -10,11 +10,14 @@ class ResultsController < ApplicationController
   end
   
   def create
+    @subjects = Subject.all
+    @users = User.where(:role => 0)
     @result = Result.new(subject_params)
     if @result.save
-      redirect_to new_result_path
+      redirect_to results_path, notice: 'Result Saved'
     else
-      render 'new'
+      flash[:notice] = "Result Not saved"
+      redirect_to :back
     end
   end
   
