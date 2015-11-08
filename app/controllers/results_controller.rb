@@ -1,5 +1,7 @@
 class ResultsController < ApplicationController
-  before_filter :check_teacher_privileges!, except: :student_login
+  before_filter :check_student_privileges!, except: :student_login
+  before_filter :check_teacher_privileges!, only: :new
+  before_filter :check_hm_privileges!, only: [:headmaster_login, :student_addmission, :student_edit]
   
   def new
     @result = Result.new
@@ -33,7 +35,8 @@ class ResultsController < ApplicationController
   end
   
   def student_login
-    @result = Result.where(:user_id => current_user[:rollnumber])
+    @result = current_user.results
+    #@result = Result.where(:user_id => current_user[:rollnumber])
   end
   
   def teacher_login
